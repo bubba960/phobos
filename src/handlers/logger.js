@@ -4,9 +4,6 @@ const { inspect } = require('util')
 const log = createLogger({
   level: process.env.DEBUG === 'true' ? 'debug' : 'info',
   format: format.combine(
-    format.timestamp({
-      format: 'YYYY-MM-DD HH:mm:ss'
-    }),
     format.colorize({ level: true }),
     format.errors({ stack: true }),
     format.printf(
@@ -23,5 +20,9 @@ const log = createLogger({
   ),
   transports: [new transports.Console()]
 })
+
+const consoleError = console.error
+
+console.error = 
 
 module.exports = log
